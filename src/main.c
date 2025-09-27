@@ -1,3 +1,4 @@
+#include "audit/audit.h"
 #include "dictionary_attack.h"
 #include "brute_force_attack.h"
 #include "utils.h"
@@ -8,7 +9,7 @@ int main(int argc, char *argv[]) {
 
     if (argc < 2) {
         printf("usage: %s <mode> [options]\n", argv[0]);
-        printf("Modes: -d (dictionary), -b (brute-force)\n");
+        printf("Modes: -d (dictionary), -b (brute-force), -a (audit)\n");
         return 1;
     }
 
@@ -38,6 +39,12 @@ int main(int argc, char *argv[]) {
         }
         
         total_attempts = run_brute_force_attack(argv[2]);
+    } else if (is_string_equal(mode, "-a")) {
+        if(argc != 4) {
+            printf("Usage: %s -a <hash-file> <wordlist-file>\n", argv[0]);
+            return 1;
+        }
+        run_audit_attack(argv[2], argv[3]);
     } else {
         printf("ERROR!!!: unknown mode.\n");
         return 1;
