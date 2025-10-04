@@ -3,5 +3,10 @@
 echo "--- Cleaning project ---"
 make clean
 
-echo "--- Building and generating compile_commands.json ---"
-bear -- make
+echo "--- Generating compile_commands.json for the language server ---"
+compiledb make
+
+echo "--- Building executables for all platforms (Linux, Windows, macOS) ---"
+make build-all
+
+echo "--- Build complete ---"
