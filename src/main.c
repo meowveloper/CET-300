@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
             printf("Usage: %s -a <hash-file> <wordlist-file>\n", argv[0]);
             return 1;
         }
-        run_audit_attack(argv[2], argv[3]);
+        total_attempts = run_audit_attack(argv[2], argv[3]);
     } else {
         printf("ERROR!!!: unknown mode.\n");
         return 1;
