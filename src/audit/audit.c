@@ -41,6 +41,7 @@ long long run_audit_attack(char *hashes_file_path, char *wordlist_file_path) {
 
         printf("\n[INFO] attacking hash: %s\n", target_hash);
 
+        rewind(wordlist_file);
         int found = search_wordlist_for_hash(wordlist_file, target_hash, found_password, &attempts_for_this_hash);
 
         total_attempts += attempts_for_this_hash;
